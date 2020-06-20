@@ -1,0 +1,53 @@
+﻿生成启动时间为 2020/5/16 15:26:08。
+     1>项目“C:\Users\lenovo\Desktop\抖音总合\抖音项目\1002观众端\1002观众端\1002观众端\1002观众端.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../Net /I../Kernel /I../../../0925Server/Packdef /I"../1002观众端" /I../ffmpeg /I../ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\1002观众端.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\FFMPEG\AudioEncode.cpp ..\FFMPEG\CollectAudio.cpp ..\FFMPEG\CollectCamera.cpp ..\FFMPEG\MyCollectDesktop.cpp ..\Kernel\TCPKernel.cpp ..\Net\TCPNet.cpp "1002观众端.cpp" "1002观众端Dlg.cpp" DlgMain.cpp TextDlg.cpp VideoDlg.cpp
+         TCPNet.cpp
+         正在生成代码...
+         正在编译...
+         VideoDlg.cpp
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\1002观众端\videodlg.cpp(76): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\1002观众端\videodlg.cpp(84): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\1002观众端\videodlg.cpp(91): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+         TextDlg.cpp
+         DlgMain.cpp
+         1002观众端Dlg.cpp
+         1002观众端.cpp
+         TCPKernel.cpp
+         MyCollectDesktop.cpp
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(274): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(302): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(384): warning C4244: “初始化”: 从“double”转换到“int64_t”，可能丢失数据
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(386): warning C4244: “=”: 从“double”转换到“int64_t”，可能丢失数据
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(388): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(421): warning C4244: “初始化”: 从“double”转换到“int64_t”，可能丢失数据
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(423): warning C4244: “=”: 从“double”转换到“int64_t”，可能丢失数据
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(425): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+     1>c:\users\lenovo\desktop\抖音总合\抖音项目\1002观众端\1002观众端\ffmpeg\mycollectdesktop.cpp(451): warning C4244: “=”: 从“int64_t”转换到“int”，可能丢失数据
+         CollectCamera.cpp
+         CollectAudio.cpp
+         AudioEncode.cpp
+         正在生成代码...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\lenovo\Desktop\抖音总合\抖音项目\1002观众端\1002观众端\Debug\1002观众端.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\lenovo\Desktop\抖音项目\1002观众端\1002观众端\lib" SDL2main.lib SDL2.lib avcodec.lib avdevice.lib avfilter.lib swscale.lib avformat.lib avutil.lib postproc.lib swresample.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\lenovo\Desktop\抖音总合\抖音项目\1002观众端\1002观众端\Debug\1002观众端.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\lenovo\Desktop\抖音总合\抖音项目\1002观众端\1002观众端\Debug\1002观众端.lib" /MACHINE:X86 "Debug\1002观众端.res"
+         Debug\AudioEncode.obj
+         Debug\CollectAudio.obj
+         Debug\CollectCamera.obj
+         Debug\MyCollectDesktop.obj
+         Debug\MyEncode.obj
+         Debug\Myffmpeg.obj
+         Debug\TCPKernel.obj
+         Debug\TCPNet.obj
+         "Debug\1002观众端.obj"
+         "Debug\1002观众端Dlg.obj"
+         Debug\CWMPPlayer4.obj
+         Debug\DlgMain.obj
+         Debug\stdafx.obj
+         Debug\TextDlg.obj
+         Debug\VideoDlg.obj
+         1002观众端.vcxproj -> C:\Users\lenovo\Desktop\抖音总合\抖音项目\1002观众端\1002观众端\Debug\1002观众端.exe
+     1>已完成生成项目“C:\Users\lenovo\Desktop\抖音总合\抖音项目\1002观众端\1002观众端\1002观众端\1002观众端.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:10.25
