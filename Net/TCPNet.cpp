@@ -17,7 +17,7 @@ TCPNet::~TCPNet(void)
 }
 bool TCPNet::InitNetWork()
 {
-	//1.Ñ¡ÔñÖÖÀà -- 
+	//1.é€‰æ‹©ç§ç±» -- 
 	 WORD wVersionRequested;
     WSADATA wsaData;
     int err;
@@ -42,16 +42,28 @@ bool TCPNet::InitNetWork()
         return false;
     }
    
-        
+        int nRet;
+	tcp_keepalive alive_in;
+	tcp_keepalive alive_out;
+	alive_in.keepalivetime = 2; // å¤šå°‘æ¬¡
+	alive_in.keepaliveinterval = 5000; //æ—¶é•¿
+	alive_in.onoff = TRUE;
 
-	//2.¹ÍÓ¶µê³¤ -- socket 
+	//2.é›‡ä½£åº—é•¿ -- socket 
 	m_sockListen = WSASocket(AF_INET,SOCK_STREAM,IPPROTO_TCP,0,0,WSA_FLAG_OVERLAPPED );
 	if(m_sockListen == INVALID_SOCKET )
 	{
 		UnInitNetWork();
 		 return false;
 	}
-	//3.Ñ¡Ö· --- 
+	unsigned long ulBytesReturn = 0;
+	nRet = WSAIoctl(m_sockListen,SIO_KEEPALIVE_VALS, &alive_in, sizeof(alive_in),&alive_out, sizeof(alive_out), &ulBytesReturn, NULL, NULL);
+	if (nRet == SOCKET_ERROR)	
+	{
+		printf("WSAIoctl failed: %d/n", WSAGetLastError());
+		 return FALSE;
+	}
+	//3.é€‰å€ --- 
 	sockaddr_in  addrServer;
 	addrServer.sin_family = AF_INET;
 	addrServer.sin_addr.S_un.S_addr = INADDR_ANY/*inet_addr("192.168.3.1")*/;
@@ -61,36 +73,36 @@ bool TCPNet::InitNetWork()
 		 UnInitNetWork();
 		 return false;
 	}
-	//4.µê³¤·¢Ğû´« -- 
+	//4.åº—é•¿å‘å®£ä¼  -- 
 	if(SOCKET_ERROR  == listen(m_sockListen,20))
 	{
 		 UnInitNetWork();
 		 return false;
 
 	}
-	//´´½¨Íê³É¶Ë¿Ú
+	//åˆ›å»ºå®Œæˆç«¯å£
 	m_Iocp = CreateIoCompletionPort(INVALID_HANDLE_VALUE,NULL,NULL,0);
 	if(m_Iocp == NULL)
 	{
 		 UnInitNetWork();
 		 return false;
 	}
-	//½«¼àÌısocket½»¸øÍê³É¶Ë¿Ú¹ÜÀí
+	//å°†ç›‘å¬socketäº¤ç»™å®Œæˆç«¯å£ç®¡ç†
 	CreateIoCompletionPort((HANDLE)m_sockListen,m_Iocp,m_sockListen,NULL);
 
-	//´´½¨n¸ösockwaiter
+	//åˆ›å»ºnä¸ªsockwaiter
 	SYSTEM_INFO si;
 	GetSystemInfo(&si);
 	for(int i=0;i<si.dwNumberOfProcessors*2;i++)
 	{
-		//µ÷ÓÃpostaccept
+		//è°ƒç”¨postaccept
 		if(!PostAccept())
 			continue;
 	}
 
-	//´´½¨Ïß³Ì³Ø
+	//åˆ›å»ºçº¿ç¨‹æ± 
 	QueueUserWorkItem(&ThreadProc,this,WT_EXECUTELONGFUNCTION);
-	//m_hThreadAccept = (HANDLE)_beginthreadex(NULL,0,&ThreadAccept,this,0,0);  //½ÓÊÕ¿Í»§¶ËÁ¬½Ó
+	//m_hThreadAccept = (HANDLE)_beginthreadex(NULL,0,&ThreadAccept,this,0,0);  //æ¥æ”¶å®¢æˆ·ç«¯è¿æ¥
 	
 	return true;
 }
@@ -156,9 +168,9 @@ DWORD WINAPI TCPNet::ThreadProc(LPVOID lpvoid)
 			{
 			case NT_ACCEPT:
 				{
-					//1.½«sockwaiter½»¸øÍê³É¶Ë¿Ú¹ÜÀí
+					//1.å°†sockwaiteräº¤ç»™å®Œæˆç«¯å£ç®¡ç†
 					CreateIoCompletionPort((HANDLE)pSock->m_sock,pthis->m_Iocp,pSock->m_sock,0);
-					//2.¶¯Ì¬´´½¨socket
+					//2.åŠ¨æ€åˆ›å»ºsocket
 					pthis->PostAccept();
 					//3.
 					pthis->PostRecv(pSock);
